@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>图书列表 - 图书管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">图书管理系统</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/books">图书列表</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/books/add">添加图书</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center text-light">
+                <span class="me-3" sec:authentication="name">用户名</span>
+                <form th:action="@{/logout}" method="post" class="m-0">
+                    <button class="btn btn-outline-light btn-sm" type="submit">退出登录</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2 class="mb-4">图书列表</h2>
+
+    <div class="mb-3">
+        <a class="btn btn-primary" href="/books/add" role="button">+ 添加图书</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>图书名称</th>
+                    <th>类别</th>
+                    <th>作者</th>
+                    <th>出版社</th>
+                    <th>版本</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${#lists.isEmpty(books)}">
+                    <td colspan="8" class="text-center text-muted">暂无图书数据</td>
+                </tr>
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.id}"></td>
+                    <td th:text="${book.name}"></td>
+                    <td th:text="${book.category}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.publisher}"></td>
+                    <td th:text="${book.version}"></td>
+                    <td th:text="${#temporals.format(book.createTime, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td>
+                        <form th:action="@{/books/delete/{id}(id=${book.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定删除该图书吗？');">删除</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

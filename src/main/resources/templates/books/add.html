@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>添加图书 - 图书管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">图书管理系统</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/books">图书列表</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/books/add">添加图书</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center text-light">
+                <span class="me-3" sec:authentication="name">用户名</span>
+                <form th:action="@{/logout}" method="post" class="m-0">
+                    <button class="btn btn-outline-light btn-sm" type="submit">退出登录</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2 class="mb-4">添加图书</h2>
+
+    <form th:action="@{/books/add}" th:object="${book}" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label">图书名称</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="请输入图书名称" required>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">类别</label>
+            <input type="text" class="form-control" id="category" th:field="*{category}" placeholder="例如：计算机、文学、历史">
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">作者</label>
+            <input type="text" class="form-control" id="author" th:field="*{author}" placeholder="请输入作者">
+        </div>
+        <div class="mb-3">
+            <label for="publisher" class="form-label">出版社</label>
+            <input type="text" class="form-control" id="publisher" th:field="*{publisher}" placeholder="请输入出版社">
+        </div>
+        <div class="mb-3">
+            <label for="version" class="form-label">版本</label>
+            <input type="text" class="form-control" id="version" th:field="*{version}" placeholder="例如：第1版、第二版">
+        </div>
+
+        <button type="submit" class="btn btn-primary">保存</button>
+        <a href="/books" class="btn btn-secondary ms-2">返回列表</a>
+    </form>
+</div>
+</body>
+</html>

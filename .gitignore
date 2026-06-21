@@ -1,0 +1,26 @@
+# 编译产物
+/target/
+*.jar.original
+
+# 本地测试数据库
+/mysql-data/
+
+# 大体积安装包与分发包（通过第三方网盘分发）
+/安装包/
+/release/
+
+# IDE
+/.idea/
+*.iml
+/.vscode/
+
+# Claude / Playwright 内部目录
+/.claude/
+/.playwright-mcp/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
