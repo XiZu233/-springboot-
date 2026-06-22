@@ -19,14 +19,17 @@
         <div class="mb-3">
             <label for="username" class="form-label">用户名</label>
             <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="请输入用户名" required>
+            <div class="text-danger small mt-1" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">密码</label>
             <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="请输入密码" required>
+            <div class="text-danger small mt-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
         </div>
         <div class="mb-3">
             <label for="confirmPassword" class="form-label">确认密码</label>
             <input type="password" class="form-control" id="confirmPassword" th:field="*{confirmPassword}" placeholder="请再次输入密码" required>
+            <div class="text-danger small mt-1" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></div>
         </div>
 
         <button class="btn btn-success w-100" type="submit">注册</button>
