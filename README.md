@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 图书管理系统
 
 一个基于 **Spring Boot + Spring Security + Thymeleaf + MyBatis + MySQL + Bootstrap** 的图书管理系统，适合作为 Java Web 课程设计或教学演示项目。
@@ -38,15 +37,19 @@
 ## 三、功能截图
 
 ### 登录页
+
 ![登录页](login-page.png)
 
 ### 图书列表
+
 ![图书列表](books-list-empty.png)
 
 ### 添加图书
+
 ![添加图书](books-add-page.png)
 
 ### 添加图书后
+
 ![添加图书后](books-list-with-book.png)
 
 ---

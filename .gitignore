@@ -24,3 +24,8 @@ Thumbs.db
 
 # 日志
 *.log
+
+# 验证截图与临时图片
+github-repo-verification.png
+*-verification.png
+verify-*.png
