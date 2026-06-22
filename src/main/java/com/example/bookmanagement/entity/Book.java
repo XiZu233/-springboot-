@@ -1,14 +1,28 @@
 package com.example.bookmanagement.entity;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 public class Book {
 
     private Long id;
+
+    @NotBlank(message = "图书名称不能为空")
+    @Size(max = 100, message = "图书名称不能超过 100 个字符")
     private String name;
+
+    @Size(max = 50, message = "类别不能超过 50 个字符")
     private String category;
+
+    @Size(max = 50, message = "作者不能超过 50 个字符")
     private String author;
+
+    @Size(max = 100, message = "出版社不能超过 100 个字符")
     private String publisher;
+
+    @Size(max = 20, message = "版本不能超过 20 个字符")
     private String version;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
